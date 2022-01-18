@@ -35,4 +35,33 @@ const registerValidation = (body) => {
   };
 };
 
+const loginValidation = (body) => {
+  const schema = {
+    type: "object",
+    properties: {
+      username: {
+        type: "string",
+        maxLength: 255
+      },
+      password: {
+        type: "string",
+        minLength: 6,
+        maxLength: 1024,
+      }
+    },
+    required: ["username", "password"],
+  };
+  const valid = ajv.validate(schema, body);
+  var error = ajv.errors;
+  if (!valid) {
+    error = ajv.errors[0].message;
+  }
+
+  return {
+    valid,
+    error,
+  };
+};
+
 module.exports.registerValidation = registerValidation;
+module.exports.loginValidation = loginValidation;

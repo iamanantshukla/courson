@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const createError = require("http-errors");
 const bcrypt = require("bcryptjs");
 
-const {registerValidation} = require('../validation/user')
+const {registerValidation, loginValidation} = require('../validation/user')
 
 //registering user
 exports.user_register = async (req, res, next) => {
@@ -21,6 +21,10 @@ exports.user_register = async (req, res, next) => {
       const userExist = await User.findOne({ username: req.body.username });
   
       if (userExist) {
+        // res.send({
+        //   status: 400,
+        //   message: "User already exist"
+        // })
         throw createError(400, "Username already exist");
         return;
       }
