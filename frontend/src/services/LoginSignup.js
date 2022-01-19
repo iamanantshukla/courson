@@ -3,6 +3,7 @@ import axios from "axios";
 class LoginSignup {
   constructor() {
     this.postSignup = this.postSignup.bind(this);
+    this.postLogin = this.postLogin.bind(this);
   }
   postSignup(username, password, name) {
     const link = "http://localhost:3001/user/register"

@@ -59,7 +59,7 @@ export class LoginSignup extends Component {
   render() {
     return (
       <Container className="login-signup-container">
-        <div className="container">
+        <div className="container-login">
           <header>
             <div
               className={
@@ -147,7 +147,6 @@ export class LoginSignup extends Component {
                 : "Reset password"}
             </button>
           </form>
-          <footer>© 2022 Dev334. All rights reserved.</footer>
         </div>
       </Container>
     );
