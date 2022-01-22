@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import "./LoginSignup.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Alert, Container } from "react-bootstrap";
 import loginSignup from '../../services/LoginSignup'
 
-export class LoginSignup extends Component {
+import "./LoginSignup.css"
+
+export default class SignInUp extends Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
@@ -25,13 +29,12 @@ export class LoginSignup extends Component {
 
   handleSubmit(e) {
 
-    console.log("Clicked")
-
     switch (this.state.option) {
       case 1:
         //login
         loginSignup.postLogin(this.state.username, this.state.password).then((response)=>{
-          alert(response.data.message)
+          localStorage.setItem("LoginStatus", "true")
+          this.props.history.push("/dashboard", {});
         }).catch((err)=>{
           alert(err.response.data.message)
         })
@@ -44,113 +47,124 @@ export class LoginSignup extends Component {
         })
         break;
 
-      case 3:
-        //forgot
-        break;
-    
       default:
         break;
     }
-    
-    
-
   }
 
-  render() {
+  render(){
     return (
-      <Container className="login-signup-container">
-        <div className="container-login">
-          <header>
-            <div
-              className={
-                "header-headings " +
-                (this.state.option === 1
-                  ? "sign-in"
-                  : this.state.option === 2
-                  ? "sign-up"
-                  : "forgot")
-              }
-            >
-              <span>Sign in to your account</span>
-              <span>Create an account</span>
-              <span>Reset your password</span>
-            </div>
-          </header>
-          <ul className="options">
-            <li
-              className={this.state.option === 1 ? "active" : ""}
-              onClick={() => this.setState({ option: 1 })}
-            >
-              Sign in
-            </li>
-            <li
-              className={this.state.option === 2 ? "active" : ""}
-              onClick={() => this.setState({ option: 2 })}
-            >
-              Sign up
-            </li>
-            <li
-              className={this.state.option === 3 ? "active" : ""}
-              onClick={() => this.setState({ option: 3 })}
-            >
-              Forgot
-            </li>
-          </ul>
-          <form
-            className="account-form"
-            onSubmit={(evt) => evt.preventDefault()}
-          >
-            <div
-              className={
-                "account-form-fields " +
-                (this.state.option === 1 ? "sign-in" : this.state.option === 2 ? "sign-up" : "forgot")
-              }
-            >
-              <input
-                id="username"
-                name="username"
-                type="text"
-                placeholder="Username"
-                onChange={this.handleInput}
-                required
-              />
-              <input
-                id="password"
-                name="password"
-                type="password"
-                placeholder="Password"
-                onChange={this.handleInput}
-                required={this.state.option === 1 || this.state.option === 2 ? true : false}
-                disabled={this.state.option === 3 ? true : false}
-              />
+      <>
+        <a href="" class="logo" target="_blank">
+          <img src="https://user-images.githubusercontent.com/59929888/150590550-dddc14c7-0a91-4eda-98ed-80f4adb8d671.svg" alt="" />
+        </a>
 
-              <input
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Full Name"
-                onChange={this.handleInput}
-                
-                required={this.state.option === 2 ? true : false}
-                disabled={this.state.option === 1 || this.state.option === 3 ? true : false}
-              />
+        <div class="section">
+          <div class="container">
+            <div class="row full-height justify-content-center">
+              <div class="col-12 text-center align-self-center py-5">
+                <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                  <h6 class="mb-0 pb-3">
+                    <span>Log In </span>
+                    <span>Sign Up</span>
+                  </h6>
+                  <input
+                    class="checkbox"
+                    type="checkbox"
+                    id="reg-log"
+                    name="reg-log"
+                  />
+                  <label for="reg-log"></label>
+                  <div class="card-3d-wrap mx-auto">
+                    <div class="card-3d-wrapper">
+                      <div class="card-front">
+                        <div class="center-wrap">
+                          <div class="section text-center">
+                            <h4 class="mb-4 pb-3">Log In</h4>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                name="username"
+                                class="form-style"
+                                placeholder="Your Username"
+                                id="username"
+                                autocomplete="off"
+                                onChange={this.handleInput}
+                              />
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="password"
+                                name="password"
+                                class="form-style"
+                                placeholder="Your Password"
+                                id="password"
+                                autocomplete="off"
+                                onChange={this.handleInput}
+                              />
+                            </div>
+                            <a href="#" class="btn mt-4" onClick={this.handleSubmit}>
+                              submit
+                            </a>
+                            <p class="mb-0 mt-4 text-center">
+                              <a href="#0" class="link">
+                                Forgot your password?
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-back">
+                        <div class="center-wrap">
+                          <div class="section text-center">
+                            <h4 class="mb-4 pb-3">Sign Up</h4>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                name="name"
+                                class="form-style"
+                                placeholder="Your Full Name"
+                                id="name"
+                                autocomplete="off"
+                                onChange={this.handleInput}
+                              />
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="text"
+                                name="username"
+                                class="form-style"
+                                placeholder="Your Username"
+                                id="username"
+                                autocomplete="off"
+                                onChange={this.handleInput}
+                              />
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="password"
+                                name="password"
+                                class="form-style"
+                                placeholder="Your Password"
+                                id="password"
+                                autocomplete="off"
+                                onChange={this.handleInput}
+                              />
+                            </div>
+                            <a href="#" class="btn mt-4" onClick={this.handleSubmit}>
+                              submit
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <button
-              className="btn-submit-form"
-              type="submit"
-              onClick={this.handleSubmit} 
-            >
-              {this.state.option === 1
-                ? "Sign in"
-                : this.state.option === 2
-                ? "Sign up"
-                : "Reset password"}
-            </button>
-          </form>
+          </div>
         </div>
-      </Container>
+      </>
     );
   }
 }
-
-export default LoginSignup;

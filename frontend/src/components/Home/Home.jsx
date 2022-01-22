@@ -9,37 +9,16 @@ export default class Home extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div className="home-background">
         <header className="home-header">
-          <nav class="header-nav container flex-container">
-            <h1 class="logo">
+          <nav class="header-nav
+           container flex-container">
+            <h2 class="logo">
               <a class="logo-link" href="#">
-                courson
+              <img src="https://user-images.githubusercontent.com/59929888/150590550-dddc14c7-0a91-4eda-98ed-80f4adb8d671.svg" alt="" />
               </a>
-            </h1>
-            <ul class="header-menu flex-container">
-              <li>
-                <a class="header-menu-link" href="">
-                  Books
-                </a>
-              </li>
-              <li>
-                <a class="header-menu-link" href="">
-                  Courses
-                </a>
-              </li>
-              <li>
-                <a class="header-menu-link" href="">
-                  Webinars
-                </a>
-              </li>
-              <li>
-                <a class="header-menu-link" href="">
-                  Blog
-                </a>
-              </li>
-            </ul>
-            <button class="ghost-button" onClick={() => { this.props.history.push('/login') }}>Get started</button>
+            </h2>            
+            <button class="ghost-button" onClick={() => { this.props.history.push('/login') }}>Login</button>
           </nav>
           <section class="header-content">
             <figure class="header-img">

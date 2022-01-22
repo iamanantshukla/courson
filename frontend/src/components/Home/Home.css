@@ -76,23 +76,26 @@ a{
   text-decoration: underline;
 }
 .ghost-button{
+  position: absolute;
+	top: 15px;
+	right: 30px;
   background: transparent;
+  color: white;
   border: none;
   border-radius: 2em;
   cursor: pointer;
-  font-size: .875em;
+  font-size: large;
   font-weight: 600;
-  height: 2em;
+  height: 3em;
   letter-spacing: -.025em;
   text-transform: uppercase;
   transition: .25s;
-  border: .125em solid var(--border-color-normal);
   min-width: 9em;
   padding: 0 2em;
 }
 .ghost-button:hover{
-  background: var(--border-color-normal);
-  color: var(--light-color);
+  background: #ffeba7;
+  color: black;
 }
 
 /* HEADER CONTENT */
@@ -182,11 +185,12 @@ a{
     width: 55vw;
   } 
   .header-description{
-    margin: 6em 3em 0;
+    margin: 8em 1em 0;
     max-width: 50vw;
   }
   .header-title{
     font-size: calc(1vw + 2.5em);
+    color: #ffeba7;
   }
 }
 
