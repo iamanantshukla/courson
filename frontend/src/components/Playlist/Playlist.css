@@ -1,0 +1,22 @@
+.playlist-title{
+    margin-top: 16px;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.playlist-description{
+    margin-top: 16px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.playlist-progress{
+    margin-top: 16px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.playlist-start-button{
+    margin: 10px;
+
+}

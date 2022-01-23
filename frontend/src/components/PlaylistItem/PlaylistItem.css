@@ -1,0 +1,19 @@
+.playlistItem-thumbnail{
+    height: 100px;
+    width: 178px;
+}
+
+.add-space{
+    margin-bottom: 12px;
+}
+
+.parent-row{
+    display: flex;
+    align-items: center
+}
+
+.right-column{
+    margin-top: 12px;
+    margin-bottom: 12px;
+    align-items: center;
+}
