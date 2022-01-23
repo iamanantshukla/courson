@@ -1,20 +1,18 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Alert, Container } from "react-bootstrap";
-import loginSignup from '../../services/LoginSignup'
+import loginSignup from "../../services/LoginSignup";
 
-import "./LoginSignup.css"
+import "./LoginSignup.css";
 
 export default class SignInUp extends Component {
-
-
   constructor(props) {
     super(props);
     this.state = {
       option: 1,
       username: "",
       name: "",
-      password: ""
+      password: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,23 +26,31 @@ export default class SignInUp extends Component {
   }
 
   handleSubmit(e) {
-
     switch (this.state.option) {
       case 1:
         //login
-        loginSignup.postLogin(this.state.username, this.state.password).then((response)=>{
-          localStorage.setItem("LoginStatus", "true")
-          this.props.history.push("/dashboard", {});
-        }).catch((err)=>{
-          alert(err.response.data.message)
-        })
+        loginSignup
+          .postLogin(this.state.username, this.state.password)
+          .then((response) => {
+            localStorage.setItem("LoginStatus", "true");
+            localStorage.setItem("LoginUsername", this.state.username);
+            this.props.history.push("/dashboard", {});
+          })
+          .catch((err) => {
+            alert(err.response.data.message);
+          });
         break;
       case 2:
-        loginSignup.postSignup(this.state.username, this.state.password, this.state.name).then((response)=>{
-          alert(response.data.message)
-        }).catch((err)=>{
-          alert(err.response.data.message)
-        })
+        loginSignup
+          .postSignup(this.state.username, this.state.password, this.state.name)
+          .then((response) => {
+            localStorage.setItem("LoginStatus", "true");
+            localStorage.setItem("LoginUsername", this.state.username);
+            this.props.history.push("/dashboard", {});
+          })
+          .catch((err) => {
+            alert(err.response.data.message);
+          });
         break;
 
       default:
@@ -52,11 +58,14 @@ export default class SignInUp extends Component {
     }
   }
 
-  render(){
+  render() {
     return (
       <>
         <a href="" class="logo" target="_blank">
-          <img src="https://user-images.githubusercontent.com/59929888/150590550-dddc14c7-0a91-4eda-98ed-80f4adb8d671.svg" alt="" />
+          <img
+            src="https://user-images.githubusercontent.com/59929888/150590550-dddc14c7-0a91-4eda-98ed-80f4adb8d671.svg"
+            alt=""
+          />
         </a>
 
         <div class="section">
@@ -103,7 +112,11 @@ export default class SignInUp extends Component {
                                 onChange={this.handleInput}
                               />
                             </div>
-                            <a href="#" class="btn mt-4" onClick={this.handleSubmit}>
+                            <a
+                              href="#"
+                              class="btn mt-4"
+                              onClick={this.handleSubmit}
+                            >
                               submit
                             </a>
                             <p class="mb-0 mt-4 text-center">
@@ -151,7 +164,11 @@ export default class SignInUp extends Component {
                                 onChange={this.handleInput}
                               />
                             </div>
-                            <a href="#" class="btn mt-4" onClick={this.handleSubmit}>
+                            <a
+                              href="#"
+                              class="btn mt-4"
+                              onClick={this.handleSubmit}
+                            >
                               submit
                             </a>
                           </div>
