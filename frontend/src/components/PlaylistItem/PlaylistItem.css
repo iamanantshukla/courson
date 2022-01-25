@@ -2,6 +2,13 @@
     height: 100px;
     width: 178px;
 }
+.playlist-item-container{
+    margin-top: 20px;
+}
+
+.playlist-item{
+    margin-top: 0px;
+}
 
 .add-space{
     margin-bottom: 12px;

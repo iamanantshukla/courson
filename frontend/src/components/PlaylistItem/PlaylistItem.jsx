@@ -14,13 +14,13 @@ export default class PlaylistItem extends Component {
 
     return (
       <>
-        <Container>
-          <Row className="parent-row">
+        <Container className="playlist-item-container">
+          <Row className="parent-row" style={{backgroundColor: this.props.color}}>
             <Col sm={4}>
               <Row>
               <img
                 className="playlistItem-thumbnail"
-                src="https://i.ytimg.com/vi/yEHCfRWz-EI/sddefault.jpg"
+                src={this.props.thumbnail}
                 alt="playlist thumbnail"
               />
               </Row>

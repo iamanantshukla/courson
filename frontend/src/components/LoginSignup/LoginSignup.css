@@ -283,7 +283,6 @@ h6 span{
 	top: 15px;
 	left: 30px;
 	display: block;
-	z-index: 100;
 	transition: all 250ms linear;
 }
 .logo img {

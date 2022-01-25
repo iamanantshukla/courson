@@ -15,6 +15,19 @@ class User {
       },
     });
   }
+
+  addplaylist(playlist){
+    const link = "http://localhost:3001/playlist/add";
+    return axios({
+      url: link,
+      method: "POST",
+      params: {
+        user_id: "61d34453df7630c2ca7efe34",
+        playlist_id: playlist
+      },
+    });
+  }
+
 }
 
 export default new User();

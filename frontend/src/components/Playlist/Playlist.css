@@ -18,5 +18,10 @@
 
 .playlist-start-button{
     margin: 10px;
+    width: 95%;
+}
 
+.playlist-container{
+    padding-top: 12px;
+    margin: 0px;
 }

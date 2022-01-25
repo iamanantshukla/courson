@@ -39,12 +39,14 @@ a{
   margin: 1em 0;
 }
 
-/* CONTAINERS STYLES */
-.container{
-  padding: 1em;
-}
-.flex-container{
+
+.homecontainer{
   display: flex;
+  padding: 1em;
+  padding: 2em;
+  align-items: center;
+  flex-direction: column;
+
 }
 
 /* HEADER NAV */
@@ -53,10 +55,6 @@ a{
   font-weight: 600;
   letter-spacing: .125em;
   text-transform: uppercase;
-}
-.header-nav{
-  align-items: center;
-  flex-direction: column;
 }
 .header-menu{
   flex-wrap: wrap;
@@ -152,9 +150,8 @@ a{
     object-position: 50% 100%;
   }
   
-  /* CONTAINERS STYLES */
-  .container{
-    padding: 2em;
+  .container {
+    max-width: '100%'  
   }
   
   /* HEADER NAV */
