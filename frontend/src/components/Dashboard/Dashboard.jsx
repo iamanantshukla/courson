@@ -95,12 +95,7 @@ export default class Dashboard extends Component {
           </Modal.Footer>
         </Modal>
 
-        <a href="" class="logo">
-          <img
-            src="https://user-images.githubusercontent.com/59929888/150590550-dddc14c7-0a91-4eda-98ed-80f4adb8d671.svg"
-            alt=""
-          />
-        </a>
+        
         <Container fluid={true} className="dashboard-container">
           <Row>
             <Col >

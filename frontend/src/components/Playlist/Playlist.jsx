@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import "./Playlist.css";
 import { ProgressBar } from "react-step-progress-bar";
+import {withRouter} from "react-router-dom"
 
-export default class Playlist extends Component {
+class Playlist extends Component {
 
   constructor(props){
     super(props)
@@ -15,10 +16,9 @@ export default class Playlist extends Component {
     }
 
     this.secondstoHours=this.secondstoHours.bind(this)
+    this.openCoursePage=this.openCoursePage.bind(this)
 
   }
-
-  static getDer
 
 
   componentDidMount(){
@@ -42,6 +42,13 @@ export default class Playlist extends Component {
     var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
     
     return <>{hDisplay + mDisplay + sDisplay}</>
+  }
+
+  openCoursePage(){
+    this.props.history.push({
+      pathname: '/course',
+      state: { detail: this.props.playlist.playlist_id }
+    })
   }
 
   render() {
@@ -85,11 +92,13 @@ export default class Playlist extends Component {
         </Row>
         <Row>
           {/* Start button */}
-          <a href="#" class="btn mt-4" >
+          <Button class="btn mt-4" onClick={this.openCoursePage}>
             Start
-          </a>
+          </Button>
         </Row>
       </Container>
     );
   }
 }
+
+export default withRouter(Playlist);

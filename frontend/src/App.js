@@ -10,7 +10,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import React, { Component } from "react";
 import LoginSignup from "./components/LoginSignup/LoginSignup";
 import Course from "./components/Course/Course"
-import VideoItem from "./components/VideoItem/VideoItem";
+import Header from "./components/Header/Header";
 
 export default class App extends Component {
   constructor(props) {
@@ -39,18 +39,21 @@ export default class App extends Component {
 
   render() {
     return (
-      <Course/>
-      // <div className="routes">
-      //   <BrowserRouter>
-      //     <Switch>
-      //       <Route exact path={"/"} component={Home} />
-      //       <Route exact path={"/login"} component={LoginSignup} />
-      //       <Route exact path={"/dashboard"}>
-      //         {this.state.loginStatus ?  <Dashboard/> : <Redirect to = "/login"/>}
-      //       </Route>
-      //     </Switch>
-      //   </BrowserRouter>
-      // </div>
+      <div className="routes">
+        <BrowserRouter>
+        <Header/>
+          <Switch>
+            <Route exact path={"/"} component={Home} />
+            <Route exact path={"/login"} component={LoginSignup} />
+            <Route exact path={"/dashboard"}>
+              {this.state.loginStatus ?  <Dashboard/> : <Redirect to = "/login"/>}
+            </Route>
+            <Route exact path={"/course"}>
+              {this.state.loginStatus ?  <Course/> : <Redirect to = "/login"/>}
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </div>
     );
   }
 }

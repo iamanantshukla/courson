@@ -10,7 +10,7 @@ export default class Home extends PureComponent {
     return (
       <div className="home-background">
         <header className="home-header">
-          <nav
+          {/* <nav
             class="homecontainer"
           >
             <h2 class="logo">
@@ -29,7 +29,7 @@ export default class Home extends PureComponent {
             >
               Login
             </button>
-          </nav>
+          </nav> */}
           <section class="header-content">
             <figure class="header-img">
               <img

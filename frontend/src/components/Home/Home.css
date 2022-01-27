@@ -75,7 +75,7 @@ a{
 }
 .ghost-button{
   position: absolute;
-	top: 15px;
+	top: 12px;
 	right: 30px;
   background: transparent;
   color: white;
@@ -89,7 +89,6 @@ a{
   text-transform: uppercase;
   transition: .25s;
   min-width: 9em;
-  padding: 0 2em;
 }
 .ghost-button:hover{
   background: #ffeba7;

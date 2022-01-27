@@ -56,3 +56,9 @@
     height: 20px;
     background-size: contain;
   }
+
+  .card{
+    background-color: #ffeaa700;
+    border: 0px solid rgba(0,0,0,.125);
+    border-color: #ffeba7;
+  }

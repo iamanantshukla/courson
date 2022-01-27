@@ -10,9 +10,9 @@ export default class Player extends Component {
         <Row>
           <ReactPlayer
             className="react-player"
-            url="https://www.youtube.com/watch?v=RGKi6LSPDLU"
+            url={"https://www.youtube.com/watch?v="+this.props.videoUrl}
             controls={true}
-            height="40vw"
+            height="34vw"
             width="100vw"
           />
         </Row>
