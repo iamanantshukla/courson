@@ -7,7 +7,7 @@ const playlistRoute = require("./routes/playlist");
 const userRoute = require("./routes/user");
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT;
 var cors = require("cors");
 app.use(cors());
 //https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLB03EA9545DD188C3&key=MY_API_KEY
@@ -47,6 +47,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT,process.env.HOST, () => {
   console.log("API started");
 });

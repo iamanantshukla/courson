@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import Player from "../Player/Player";
 import Playlist from "../../services/Playlist";
 import VideoItem from "../VideoItem/VideoItem";
-import './Course.css'
+import "./Course.css";
 
 class Course extends Component {
   constructor(props) {
@@ -13,11 +13,14 @@ class Course extends Component {
       loading: true,
       selected: 0,
       videos: [],
+      playlistId: this.props.location.state.detail.playlist_id,
+      id: this.props.location.state.detail._id,
+      videoWatched: this.props.location.state.detail.video_watched,
     };
   }
 
   componentDidMount() {
-    Playlist.getVideoItems(this.props.location.state.detail)
+    Playlist.getVideoItems(this.state.playlistId)
       .then((response) => {
         //console.log(response.data)
         this.setState({ videos: response.data, loading: false });
@@ -27,15 +30,37 @@ class Course extends Component {
       });
   }
 
-  render() {
-    const { videos, loading, selected } = this.state;
+  handleVideoItemClick(playlistId, videoId, watched) {
+    try {
+      if (watched) {
+        Playlist.removeVideoWatched(playlistId, videoId)
+          .then((response) => {
+            console.log("Removed video");
+          })
+          .catch((err) => {
+            alert(err.response.data.message);
+          });
+      } else {
+        Playlist.setVideoWatched(playlistId, videoId)
+          .then((response) => {
+            console.log("Added video");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-    if(loading){
-      return(
-        <>
-        Loading
-        </>
-      )
+  render() {
+    const { videos, loading, selected, videoWatched, id } = this.state;
+
+    console.log(id, videoWatched);
+
+    if (loading) {
+      return <>Loading</>;
     }
 
     return (
@@ -46,11 +71,24 @@ class Course extends Component {
           </Col>
           <Col sm="4" className="video-items">
             {videos.map((item, index) => {
+              var watched = false;
+              var videoId = item.snippet.resourceId.videoId;
+              if (videoWatched.includes(videoId)) {
+                watched = true;
+              }
               return (
-                <Row onClick={()=>{
-                  this.setState({selected: index})
-                }}>
-                  <VideoItem title={item.snippet.title} />
+                <Row
+                  onClick={() => {
+                    this.setState({ selected: index });
+                  }}
+                >
+                  <VideoItem
+                    title={item.snippet.title}
+                    playlistId={id}
+                    watched={watched}
+                    videoId={videoId}
+                    onVideoClick={this.handleVideoItemClick}
+                  />
                 </Row>
               );
             })}
@@ -61,4 +99,4 @@ class Course extends Component {
   }
 }
 
-export default withRouter(Course)
+export default withRouter(Course);

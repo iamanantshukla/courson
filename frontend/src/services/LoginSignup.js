@@ -6,7 +6,7 @@ class LoginSignup {
     this.postLogin = this.postLogin.bind(this);
   }
   postSignup(username, password, name) {
-    const link = "http://localhost:3001/user/register"
+    const link = "http://localhost:8000/user/register"
     return axios({
       url: link,
       method: "POST",
@@ -19,7 +19,7 @@ class LoginSignup {
   }
 
   postLogin(username, password) {
-    const link = "http://localhost:3001/user/login"
+    const link = "http://localhost:8000/user/login"
     return axios({
       url: link,
       method: "POST",

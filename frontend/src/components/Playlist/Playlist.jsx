@@ -47,7 +47,7 @@ class Playlist extends Component {
   openCoursePage(){
     this.props.history.push({
       pathname: '/course',
-      state: { detail: this.props.playlist.playlist_id }
+      state: { detail: this.props.playlist}
     })
   }
 

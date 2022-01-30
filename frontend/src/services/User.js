@@ -6,7 +6,7 @@ class User {
   }
 
   getUserInfo(username) {
-    const link = "http://localhost:3001/playlist/get";
+    const link = "http://localhost:8000/playlist/get";
     return axios({
       url: link,
       method: "GET",
@@ -17,7 +17,7 @@ class User {
   }
 
   addplaylist(playlist){
-    const link = "http://localhost:3001/playlist/add";
+    const link = "http://localhost:8000/playlist/add";
     return axios({
       url: link,
       method: "POST",
